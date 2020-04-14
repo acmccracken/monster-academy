@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import MonsterPage from '../MonsterPage/MonsterPage'
-import * as tktkAPI from '../../services/tktk-api';
+import * as monsterAPI from '../../services/monster-api';
 import * as userAPI from '../../services/user-api';
 import Monster from '../../components/Monster/Monster'
 import NavBar from '../../components/NavBar/NavBar'
@@ -13,7 +13,7 @@ class App extends Component {
   state = {
     // Initialize user if there's a token, otherwise null
     user: userAPI.getUser(),
-    tktks: null
+    monsters: null
   };
 
   /*--------------------------- Callback Methods ---------------------------*/
@@ -30,7 +30,7 @@ class App extends Component {
   /*-------------------------- Lifecycle Methods ---------------------------*/
 
   async componentDidMount() {
-    const monsters = await tktkAPI.index();
+    const monsters = await monsterAPI.index();
     this.setState({ monsters });
   }
 
@@ -57,7 +57,7 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/tktk-secret' render={() => 
+          <Route exact path='/monster-secret' render={() => 
             userAPI.getUser() ? 
               <MonsterPage />
             :
