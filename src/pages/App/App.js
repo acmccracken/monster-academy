@@ -57,7 +57,7 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/monster-secret' render={() => 
+          <Route exact path='/' render={() => 
             userAPI.getUser() ? 
               <MonsterPage />
             :

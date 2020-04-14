@@ -8,7 +8,7 @@ const monsterSchema = new Schema({
   hp: Number,
   mp: Number,
   attack: Number,
-  defence: Number,
+  defense: Number,
 
 }, { timestamps: true });
 
