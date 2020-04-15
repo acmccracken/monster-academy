@@ -43,7 +43,7 @@ class AddMonsterPage extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Monster HP (required)</label>
+            <label>Monster HP </label>
             <input
               className="form-control"
               name="hp"
