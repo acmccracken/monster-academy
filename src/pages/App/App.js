@@ -3,7 +3,8 @@ import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
-import MonsterPage from '../MonsterPage/MonsterPage'
+import MonsterDisplayPage from '../MonsterDisplayPage/MonsterDisplayPage'
+import AddMonsterPage from '../../pages/AddMonsterPage/AddMonsterPage';
 import * as monsterAPI from '../../services/monster-api';
 import * as userAPI from '../../services/user-api';
 import Monster from '../../components/Monster/Monster'
@@ -13,7 +14,7 @@ class App extends Component {
   state = {
     // Initialize user if there's a token, otherwise null
     user: userAPI.getUser(),
-    monsters: null
+    monsters: []
   };
 
   /*--------------------------- Callback Methods ---------------------------*/
@@ -30,8 +31,15 @@ class App extends Component {
   /*-------------------------- Lifecycle Methods ---------------------------*/
 
   async componentDidMount() {
-    const monsters = await monsterAPI.index();
+    const monsters = await monsterAPI.getAll();
     this.setState({ monsters });
+  }
+
+  handleAddMonster = async newMonsterData => {
+    const newMonster = await monsterAPI.create(newMonsterData);
+    this.setState(state => ({
+      monsters: [...state.monsters, newMonster]
+    }), () => this.props.history.push('/'));
   }
 
   /*-------------------------------- Render --------------------------------*/
@@ -59,13 +67,22 @@ class App extends Component {
           }/>
           <Route exact path='/' render={() => 
             userAPI.getUser() ? 
-              <MonsterPage />
+              <MonsterDisplayPage 
+              monsters={this.state.monsters}
+              />
             :
               <Redirect to='/login'/>
           }/>
-          <Route exact path='/' render={() =>
-            <Monster />
-          }/>
+          <Route exact path='/' render={({history}) => 
+          <MonsterDisplayPage
+            monsters={this.state.monsters}
+          />
+        } />
+          <Route exact path='/add' render={() => 
+          <AddMonsterPage
+            handleAddMonster = {this.handleAddMonster}
+          />
+        } />
         </Switch>
       </div>
     );
