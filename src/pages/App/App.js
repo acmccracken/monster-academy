@@ -5,19 +5,17 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import MonsterDisplayPage from '../MonsterDisplayPage/MonsterDisplayPage'
 import AddMonsterPage from '../../pages/AddMonsterPage/AddMonsterPage';
+import EditMonsterPage from '../../pages/EditMonsterPage/EditMonsterPage';
 import * as monsterAPI from '../../services/monster-api';
 import * as userAPI from '../../services/user-api';
-import Monster from '../../components/Monster/Monster'
 import NavBar from '../../components/NavBar/NavBar'
 
 class App extends Component {
   state = {
-    // Initialize user if there's a token, otherwise null
     user: userAPI.getUser(),
     monsters: []
   };
 
-  /*--------------------------- Callback Methods ---------------------------*/
 
   handleLogout = () => {
     userAPI.logout();
@@ -28,7 +26,6 @@ class App extends Component {
     this.setState({user: userAPI.getUser()});
   }
 
-  /*-------------------------- Lifecycle Methods ---------------------------*/
 
   async componentDidMount() {
     const monsters = await monsterAPI.getAll();
@@ -40,6 +37,24 @@ class App extends Component {
     this.setState(state => ({
       monsters: [...state.monsters, newMonster]
     }), () => this.props.history.push('/'));
+  }
+
+  handleDeleteMonster= async id => {
+    await monsterAPI.deleteOne(id);
+    this.setState(state => ({
+      monsters: state.monsters.filter(p => p._id !== id)
+    }), () => this.props.history.push('/'));
+  }
+  
+  handleUpdateMonster = async updatedMonsterData => {
+    const updatedMonster = await monsterAPI.update(updatedMonsterData);
+    const newMonstersArray = this.state.monsters.map(p => 
+      p._id === updatedMonster._id ? updatedMonster : p
+    );
+    this.setState(
+      {monsters: newMonstersArray},
+      () => this.props.history.push('/')
+    );
   }
 
   /*-------------------------------- Render --------------------------------*/
@@ -81,6 +96,12 @@ class App extends Component {
           <Route exact path='/add' render={() => 
           <AddMonsterPage
             handleAddMonster = {this.handleAddMonster}
+          />
+        } />
+        <Route exact path='/edit' render={({history, location}) => 
+          <EditMonsterPage
+            handleUpdateMonster={this.handleUpdateMonster}
+            location={location}
           />
         } />
         </Switch>

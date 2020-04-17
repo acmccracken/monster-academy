@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-function AddMonsterCard({monster}) { 
+function AddMonsterCard({monster, handleDeleteMonster}) { 
     return (
         <div className='panel panel-default'>
             <div className="panel-heading">
@@ -21,7 +21,7 @@ function AddMonsterCard({monster}) {
                     <dd>{monster.defense}</dd>
                 </dl>
             </div>
-            {/*<div className='panel-footer'>
+            <div className='panel-footer'>
                 <Link
                     className='btn btn-xs btn-warning'
                     to={{
@@ -33,10 +33,9 @@ function AddMonsterCard({monster}) {
             </Link>
             <button
                 className='btn btn-xs btn-danger margin-left-10'
-                onClick={() => handleDeletePuppy(puppy._id)}
+                onClick={() => handleDeleteMonster(monster._id)}
             ></button>
             </div>
-                */}
             </div>
     )
 }

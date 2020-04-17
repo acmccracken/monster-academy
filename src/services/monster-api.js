@@ -17,12 +17,25 @@ export function create(monster) {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
-      // Add this header - don't forget the space after Bearer
       'Authorization': 'Bearer ' + tokenService.getToken()
-    }
+    },
+    body: JSON.stringify(monster)
   };
-    return fetch(BASE_URL, options, {
-      method: 'POST',
-      headers: {'content-type': 'application/json'},
-      body: JSON.stringify(monster)
-  }).then(res => res.json());}
+    return fetch(BASE_URL, options).then(res => res.json());
+}
+
+export function deleteOne(id) {
+  return fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE'
+  }).then(res => res.json());
+}
+
+export function update(monster) {
+  return fetch(`${BASE_URL}/${monster._id}`, {
+    method: 'PUT',
+    headers: {'content-type': 'application/json'},
+    body: JSON.stringify(monster)
+  }).then(res => res.json());
+}
+
+

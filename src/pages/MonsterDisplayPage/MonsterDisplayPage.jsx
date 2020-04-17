@@ -11,6 +11,8 @@ function MonsterDisplayPage(props) {
             <AddMonsterCard
             key={monster._id}
             monster={monster}
+            handleDeleteMonster={props.handleDeleteMonster}
+
             />
         )}
       </div>
