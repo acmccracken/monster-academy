@@ -13,7 +13,9 @@ const NavBar = (props) => {
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <Link to='/add' className='NavBar-link'>Add a Monster</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;
-      <Link to='/' className='NavBar-link'>See All Monsters</Link>
+      <Link to='/' className='NavBar-link'>My Academy</Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <Link to='/all' className='NavBar-link'>See All Monsters</Link>
     </div>
     :
     <div>
@@ -23,7 +25,9 @@ const NavBar = (props) => {
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <Link to='/add' className='NavBar-link'>Add a Monster</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;
-      <Link to='/' className='NavBar-link'>See All Monsters</Link>
+      <Link to='/' className='NavBar-link'>My Academy</Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <Link to='/all' className='NavBar-link'>See All Monsters</Link>
     </div>;
 
   return (

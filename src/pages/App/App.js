@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
+import MonsterAcademyPage from '../MonsterAcademyPage/MonsterAcademyPage'
 import MonsterDisplayPage from '../MonsterDisplayPage/MonsterDisplayPage'
 import AddMonsterPage from '../../pages/AddMonsterPage/AddMonsterPage';
 import EditMonsterPage from '../../pages/EditMonsterPage/EditMonsterPage';
@@ -82,6 +83,17 @@ class App extends Component {
           }/>
           <Route exact path='/' render={({history}) => 
             userAPI.getUser() ? 
+          <MonsterAcademyPage
+            monsters={this.state.monsters}
+            handleDeleteMonster={this.handleDeleteMonster}
+            user={this.state.user}
+          />
+          :
+              <Redirect to='/login'/>
+          
+        } />
+        <Route exact path='/all' render={({history}) => 
+            userAPI.getUser() ? 
           <MonsterDisplayPage
             monsters={this.state.monsters}
             handleDeleteMonster={this.handleDeleteMonster}
@@ -89,6 +101,7 @@ class App extends Component {
           />
           :
               <Redirect to='/login'/>
+          
         } />
           <Route exact path='/add' render={() => 
           <AddMonsterPage

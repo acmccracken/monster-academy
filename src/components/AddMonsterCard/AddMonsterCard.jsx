@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import userAPI from '../../services/user-api';
 
 
 function AddMonsterCard({monster, handleDeleteMonster, user}) { 
@@ -23,22 +24,28 @@ function AddMonsterCard({monster, handleDeleteMonster, user}) {
                 </dl>
             </div>
             <div className='panel-footer'>
+                {monster.owner === user._id  ?
                     <Link
                         className='btn btn-xs btn-warning'
                         to={{
                             pathname: '/edit',
                             state: {monster}
                         }}
-                >
+                    >
                 EDIT
                 </Link>
-                
-               
+                :
+                <></>
+                }
+                {monster.owner === user._id  ?
                     <button
                         className='btn btn-danger'
                         onClick={() => handleDeleteMonster(monster._id)}
                     ></button>
-                 
+                    :
+                <></>
+                }
+                
             </div>
             </div>
     )
