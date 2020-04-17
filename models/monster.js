@@ -9,6 +9,13 @@ const monsterSchema = new Schema({
   mp: Number,
   attack: Number,
   defense: Number,
+  owner: {
+    type: Schema.Types.ObjectId, 
+    ref: "User"
+},
+ownerName: {
+    type: String
+} 
 
 }, { timestamps: true });
 

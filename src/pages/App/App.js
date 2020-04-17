@@ -85,6 +85,7 @@ class App extends Component {
           <MonsterDisplayPage
             monsters={this.state.monsters}
             handleDeleteMonster={this.handleDeleteMonster}
+            user={this.state.user}
           />
           :
               <Redirect to='/login'/>

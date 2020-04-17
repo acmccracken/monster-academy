@@ -19,14 +19,11 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
-  console.log('user: ', req.user)
-  try {
+    req.body.owner = req.user._id;
+    req.body.ownerName = req.user.name;  
     const monster = await Monster.create(req.body);
     res.status(201).json(monster);
-  }
-  catch(err){
-    res.status(500).json(err);
-  }
+  
 }
 
 async function show(req, res) {

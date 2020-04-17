@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-function AddMonsterCard({monster, handleDeleteMonster}) { 
+
+function AddMonsterCard({monster, handleDeleteMonster, user}) { 
     return (
         <div className='panel panel-default'>
-            <div className="panel-heading">
+            <div className='panel-heading'>
                 <h3 className='panel-title'>{monster.name}</h3>
             </div>
             <div className='panel-body'>
@@ -22,19 +23,22 @@ function AddMonsterCard({monster, handleDeleteMonster}) {
                 </dl>
             </div>
             <div className='panel-footer'>
-                <Link
-                    className='btn btn-xs btn-warning'
-                    to={{
-                        pathname: '/edit',
-                        state: {monster}
-                    }}
+                    <Link
+                        className='btn btn-xs btn-warning'
+                        to={{
+                            pathname: '/edit',
+                            state: {monster}
+                        }}
                 >
                 EDIT
-            </Link>
-            <button
-                className='btn btn-danger'
-                onClick={() => handleDeleteMonster(monster._id)}
-            ></button>
+                </Link>
+                
+               
+                    <button
+                        className='btn btn-danger'
+                        onClick={() => handleDeleteMonster(monster._id)}
+                    ></button>
+                 
             </div>
             </div>
     )
