@@ -91,6 +91,8 @@ class App extends Component {
           <Route exact path='/' render={({history}) => 
           <MonsterDisplayPage
             monsters={this.state.monsters}
+            handleDeleteMonster={this.handleDeleteMonster}
+
           />
         } />
           <Route exact path='/add' render={() => 

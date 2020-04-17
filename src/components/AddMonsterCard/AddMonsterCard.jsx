@@ -32,7 +32,7 @@ function AddMonsterCard({monster, handleDeleteMonster}) {
                 EDIT
             </Link>
             <button
-                className='btn btn-xs btn-danger margin-left-10'
+                className='btn btn-danger'
                 onClick={() => handleDeleteMonster(monster._id)}
             ></button>
             </div>
