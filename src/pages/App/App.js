@@ -80,20 +80,14 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/' render={() => 
-            userAPI.getUser() ? 
-              <MonsterDisplayPage 
-              monsters={this.state.monsters}
-              />
-            :
-              <Redirect to='/login'/>
-          }/>
           <Route exact path='/' render={({history}) => 
+            userAPI.getUser() ? 
           <MonsterDisplayPage
             monsters={this.state.monsters}
             handleDeleteMonster={this.handleDeleteMonster}
-
           />
+          :
+              <Redirect to='/login'/>
         } />
           <Route exact path='/add' render={() => 
           <AddMonsterPage
