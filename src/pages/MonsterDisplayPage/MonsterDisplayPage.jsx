@@ -12,6 +12,7 @@ function MonsterDisplayPage(props) {
             key={monster._id}
             monster={monster}
             handleDeleteMonster={props.handleDeleteMonster}
+            user={props.user}
 
             />
         )}

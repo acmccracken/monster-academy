@@ -8,12 +8,16 @@ function MonsterDisplayPage(props) {
       <h1>Monsters</h1>
       <div className='MonsterDisplayPage-grid'>
         {props.monsters.map(monster =>
+            monster.owner===props.user._id ?
             <AddMonsterCard
             key={monster._id}
             monster={monster}
             handleDeleteMonster={props.handleDeleteMonster}
+            user={props.user}
 
             />
+            :
+            <></>
         )}
       </div>
     </>

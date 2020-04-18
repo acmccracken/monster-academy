@@ -12,10 +12,10 @@ const monsterSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId, 
     ref: "User"
-},
-ownerName: {
+  },
+  ownerName: {
     type: String
-} 
+  } 
 
 }, { timestamps: true });
 
