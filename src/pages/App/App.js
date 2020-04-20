@@ -63,58 +63,62 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Monster Academy</h1>
-        <NavBar
-          user={this.state.user}
-          handleLogout={this.handleLogout}
-        />
-        <Switch>
-          <Route exact path='/login' render={({ history }) => 
-            <LoginPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
-          }/>
-          <Route exact path='/signup' render={({ history }) => 
-            <SignupPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
-          }/>
-          <Route exact path='/' render={({history}) => 
-            userAPI.getUser() ? 
-          <MonsterAcademyPage
-            monsters={this.state.monsters}
-            handleDeleteMonster={this.handleDeleteMonster}
+        <header className="App-header">
+          Monster Academy
+          <NavBar 
             user={this.state.user}
+            handleLogout={this.handleLogout}
           />
-          :
-              <Redirect to='/login'/>
-          
-        } />
-        <Route exact path='/all' render={({history}) => 
-            userAPI.getUser() ? 
-          <MonsterDisplayPage
-            monsters={this.state.monsters}
-            handleDeleteMonster={this.handleDeleteMonster}
-            user={this.state.user}
-          />
-          :
-              <Redirect to='/login'/>
-          
-        } />
-          <Route exact path='/add' render={() => 
-          <AddMonsterPage
-            handleAddMonster = {this.handleAddMonster}
-          />
-        } />
-        <Route exact path='/edit' render={({history, location}) => 
-          <EditMonsterPage
-            handleUpdateMonster={this.handleUpdateMonster}
-            location={location}
-          />
-        } />
-        </Switch>
+        </header>
+        <main>
+          <Switch>
+            <Route exact path='/login' render={({ history }) => 
+              <LoginPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            }/>
+            <Route exact path='/signup' render={({ history }) => 
+              <SignupPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            }/>
+            <Route exact path='/' render={({history}) => 
+              userAPI.getUser() ? 
+            <MonsterAcademyPage
+              monsters={this.state.monsters}
+              handleDeleteMonster={this.handleDeleteMonster}
+              user={this.state.user}
+            />
+            :
+                <Redirect to='/login'/>
+            
+          } />
+          <Route exact path='/all' render={({history}) => 
+              userAPI.getUser() ? 
+            <MonsterDisplayPage
+              monsters={this.state.monsters}
+              handleDeleteMonster={this.handleDeleteMonster}
+              user={this.state.user}
+            />
+            :
+                <Redirect to='/login'/>
+            
+          } />
+            <Route exact path='/add' render={() => 
+            <AddMonsterPage
+              handleAddMonster = {this.handleAddMonster}
+            />
+          } />
+          <Route exact path='/edit' render={({history, location}) => 
+            <EditMonsterPage
+              handleUpdateMonster={this.handleUpdateMonster}
+              location={location}
+            />
+          } />
+          </Switch>
+        </main>
       </div>
     );
   }

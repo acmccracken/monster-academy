@@ -5,7 +5,7 @@ import AddMonsterCard from '../../components/AddMonsterCard/AddMonsterCard';
 function MonsterDisplayPage(props) {
   return (
     <>
-      <h1>Monsters</h1>
+      <h1>The Monsters</h1>
       <div className='MonsterDisplayPage-grid'>
         {props.monsters.map(monster =>
             <AddMonsterCard

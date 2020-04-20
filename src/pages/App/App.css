@@ -1,7 +1,32 @@
 .App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 7vmin auto;
+}
+
+.App-header {
+  background-color: rebeccapurple;
   display: flex;
-  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vmin;
+  font-size: 2vmin;
+  color: rgb(255, 2, 192);
+}
+
+.App main {
+  background-color: var(--background);
+  display: grid;
+  flex-flow: nowrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+}
+
+.App main h1 {
+  font-size: 160px;
+  font-family: 'Manrope', sans-serif;
+  font-family: 'UnifrakturMaguntia', cursive;
+  justify-content: center;
+  color: rgb(203, 31, 148);
+  margin-bottom: 10vmin;
 }
