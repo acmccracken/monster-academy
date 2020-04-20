@@ -5,21 +5,14 @@ import {Link} from 'react-router-dom';
 function AddMonsterCard({monster, handleDeleteMonster, user}) { 
     return (
         <div className='panel panel-default'>
-            <div className='panel-heading'>
-                <h3 className='panel-title'>{monster.name}</h3>
-            </div>
+            
             <div className='panel-body'>
                 <dl>
-                    <dt>Name</dt>
-                    <dd>{monster.name}</dd>
-                    <dt>HP</dt>
-                    <dd>{monster.hp}</dd>
-                    <dt>MP</dt>
-                    <dd>{monster.mp}</dd>
-                    <dt>Attack</dt>
-                    <dd>{monster.attack}</dd>
-                    <dt>Defense</dt>
-                    <dd>{monster.defense}</dd>
+                    <dt>Name: &nbsp;&nbsp; {monster.name}</dt>
+                    <dt>HP:&nbsp;&nbsp; {monster.hp}</dt>
+                    <dt>MP: &nbsp;&nbsp; {monster.mp}</dt>
+                    <dt>Attack: &nbsp;&nbsp; {monster.mp}</dt>
+                    <dt>Defense: &nbsp;&nbsp; {monster.mp}</dt>
                 </dl>
             </div>
             <div className='panel-footer'>

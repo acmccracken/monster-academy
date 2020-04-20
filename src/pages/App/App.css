@@ -15,6 +15,7 @@
 }
 
 .App main {
+  font-family: 'Staatliches', cursive;
   background-color: var(--background);
   display: grid;
   flex-flow: nowrap;
