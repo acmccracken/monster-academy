@@ -1,8 +1,9 @@
 .MonsterDisplayPage-grid {
     font-family: 'Staatliches', cursive;
+    font-size: 20px;
     width: 80%;
     display: grid;
-    grid-template-columns: 150px 150px 150px 150px;
+    grid-template-columns: 200px 200px 200px 200px;
     grid-template-rows: repeat(auto-fit, minmax(170px, 1fr));
     grid-gap: 35px;
   }

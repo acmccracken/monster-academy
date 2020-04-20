@@ -33,7 +33,7 @@ class AddMonsterPage extends Component {
         <h1>Add Monster</h1>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label>Monster Name (required)</label>
+            <label>Monster Name</label>
             <input
               className="form-control"
               name="name"
@@ -59,6 +59,7 @@ class AddMonsterPage extends Component {
               name="mp"
               value={this.state.formData.mp}
               onChange={this.handleChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -68,6 +69,7 @@ class AddMonsterPage extends Component {
               name="attack"
               value={this.state.formData.attack}
               onChange={this.handleChange}
+              required
             />
           </div>
           <div className="form-group">
@@ -77,6 +79,7 @@ class AddMonsterPage extends Component {
               name="denfese"
               value={this.state.formData.defense}
               onChange={this.handleChange}
+              required
             />
           </div>
           <button
