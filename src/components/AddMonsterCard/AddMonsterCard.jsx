@@ -11,8 +11,8 @@ function AddMonsterCard({monster, handleDeleteMonster, user}) {
                     <dt>Name: &nbsp;&nbsp; {monster.name}</dt>
                     <dt>HP:&nbsp;&nbsp; {monster.hp}</dt>
                     <dt>MP: &nbsp;&nbsp; {monster.mp}</dt>
-                    <dt>Attack: &nbsp;&nbsp; {monster.mp}</dt>
-                    <dt>Defense: &nbsp;&nbsp; {monster.mp}</dt>
+                    <dt>Attack: &nbsp;&nbsp; {monster.attack}</dt>
+                    <dt>Defense: &nbsp;&nbsp; {monster.defense}</dt>
                 </dl>
             </div>
             <div className='panel-footer'>
